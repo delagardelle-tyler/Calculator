@@ -20,115 +20,144 @@ memString = ""
 
 #functions
 def updateDisplay():
+    #updates display
     displayBox["text"] = memString
 
 def addition():
     global memString
+    #makes sure that you are creating a viable eqaution to evaluate
     if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
+        #adds "+" to memString
         memString = memString + "+"
         updateDisplay()
     else:
+         #if there was already an operand in the string, displays error
         displayBox["text"] = "error"
 
 def subtraction():
     global memString
+    #makes sure that you are creating a viable eqaution to evaluate
     if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
-
+        #adds '-' to memString
         memString = memString + "-"
         updateDisplay()
 
     else:
+        #if there was already an operand in the string, displays error
         displayBox["text"] = "error"
 
 def multiply():
     global memString
+    #makes sure that you are creating a viable eqaution to evaluate
     if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
-    
+        #adds '*' to memString
         memString = memString + "*"
         updateDisplay()
 
     else:
+        #if there was already an operand in the string, displays error
         displayBox["text"] = "error"
 
 def divide():
     global memString
+     #makes sure that you are creating a viable eqaution to evaluate
     if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
-
+         #adds '/' to memString
         memString = memString + "/"
         updateDisplay()
 
     else:
+         #if there was already an operand in the string, displays error
         displayBox["text"] = "error"
 
 def One():
     global memString
+    #adds "1" to end of mem string, then updates display
     memString = memString + "1"
     updateDisplay()
 
 def Two():
     global memString
+    #adds "2" to end of mem string, then updates display
     memString = memString + "2"
     updateDisplay()
 
 def Three():
     global memString
+    #adds "3" to end of mem string, then updates display
     memString = memString + "3"
     updateDisplay()
 def Four():
     global memString
+    #adds "4" to end of mem string, then updates display
     memString = memString + "4"
     updateDisplay()
 def Five():
     global memString
+    #adds "5" to end of mem string, then updates display
     memString = memString + "5"
     updateDisplay()
 def Six():
     global memString
+    #adds "6" to end of mem string, then updates display
     memString = memString + "6"
     updateDisplay()
 def Seven():
     global memString
+    #adds "7" to end of mem string, then updates display
     memString = memString + "7"
     updateDisplay()
 def Eight():
     global memString
+    #adds "8" to end of mem string, then updates display
     memString = memString + "8"
     updateDisplay()
 def Nine():
     global memString
+    #adds "9" to end of mem string, then updates display
     memString = memString + "9"
     updateDisplay()
 def Zero():
     global memString
+    #adds "0" to end of mem string, then updates display
     memString = memString + "0"
     updateDisplay()
 def Clear():
+    #clears memory and updates display
     global memString
     memString = ""
     updateDisplay()
 def ClearEntry():
+     #clears memory and updates display
     global memString
     memString = ""
     updateDisplay()
 def Equals():
     global memString
+    #evaluates memory string
     memString = str(eval(memString))
+    #displays memory string
     displayBox["text"] = memString
+    #clears memory
     memString = ""
     
 def Negate():
     global memString
+    #negates memString
     number = eval(memString)
     number = -1 * number
     memString = str(number)
     updateDisplay()
 def Decimal():
     global memString
+    #adds a decimal to memString
     memString = memString + "."
     updateDisplay()
 
 #font
 fontTuple = ("Times New Roman" , 20),
+
+
 #Button Creation
 
 displayBox = Label(root, font = fontTuple , text = "0" ,height = 3 , width = 20 ,bg = "white")
