@@ -25,8 +25,8 @@ def updateDisplay():
 
 def addition():
     global memString
-    #makes sure that you are creating a viable eqaution to evaluate
-    if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
+    #makes sure that you are creating a viable eqaution to evaluate, ignoring the first character in case of negative
+    if "+" not in memString[1:] and "-" not in memString[1:] and "*" not in memString[1:] and  "/" not in memString[1:]:
         #adds "+" to memString
         memString = memString + "+"
         updateDisplay()
@@ -36,8 +36,8 @@ def addition():
 
 def subtraction():
     global memString
-    #makes sure that you are creating a viable eqaution to evaluate
-    if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
+    #makes sure that you are creating a viable eqaution to evaluate, ignoring the first character in case of negative
+    if "+" not in memString[1:] and "-" not in memString[1:] and "*" not in memString[1:] and  "/" not in memString[1:]:
         #adds '-' to memString
         memString = memString + "-"
         updateDisplay()
@@ -48,8 +48,8 @@ def subtraction():
 
 def multiply():
     global memString
-    #makes sure that you are creating a viable eqaution to evaluate
-    if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
+    #makes sure that you are creating a viable eqaution to evaluate, ignoring the first character in case of negative
+    if "+" not in memString[1:] and "-" not in memString[1:] and "*" not in memString[1:] and  "/" not in memString[1:]:
         #adds '*' to memString
         memString = memString + "*"
         updateDisplay()
@@ -60,8 +60,8 @@ def multiply():
 
 def divide():
     global memString
-     #makes sure that you are creating a viable eqaution to evaluate
-    if "+" not in memString and "-" not in memString and "*" not in memString and  "/" not in memString:
+    #makes sure that you are creating a viable eqaution to evaluate, ignoring the first character in case of negative
+    if "+" not in memString[1:] and "-" not in memString[1:] and "*" not in memString[1:] and  "/" not in memString[1:]:
          #adds '/' to memString
         memString = memString + "/"
         updateDisplay()
@@ -143,11 +143,35 @@ def Equals():
     
 def Negate():
     global memString
-    #negates memString
-    number = eval(memString)
-    number = -1 * number
-    memString = str(number)
-    updateDisplay()
+    #Checks to see if there is an operand or not
+    if "+" not in memString[1:] and "-" not in memString[1:] and "*" not in memString[1:] and  "/" not in memString[1:]:
+        #if no operand, then can just negate current memString, then updates display
+        number = eval(memString)
+        number = -1 * number
+        memString = str(number)
+        updateDisplay()
+        
+    else:
+        #if there is an operand, finds the index of the operand
+        if "+" in memString:
+            index = memString.index("+")
+        elif "-" in memString:
+            index = memString.index("-")
+        elif "*" in memString:
+            index = memString.index("*")
+        else:
+            index = memString.index("/")
+        #slices the string into the first number+operand, and second number
+        memSlice = memString[index+1:]
+        memSlice1 = memString[:index+1]
+        #negates second number
+        negateNum =str(-1 * eval(memSlice))
+        #combines the strings back together
+        memString = memSlice1 + negateNum
+        #updaste display
+        updateDisplay()
+        
+        
 def Decimal():
     global memString
     #adds a decimal to memString
